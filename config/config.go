@@ -11,24 +11,15 @@ const DEFAULT_MAX_OPEN_CONNS = 5
 
 type EnumDimensionType string
 
-const (
-	EnumDimensionTypeSize   EnumDimensionType = "Size"
-	EnumDimensionTypeWeight EnumDimensionType = "Weight"
-)
-
 type (
 
 	// Config -.
 	Config struct {
-		//JwtToken string `mapstructure:"JWT_TOKEN" json:"JWT_TOKEN"`
 		Auth      `mapstructure:",squash"`
 		JwtSecret string `env:"JWT_SECRET"`
-		//App      `mapstructure:",squash"`
 		HTTP      `mapstructure:",squash"`
 		GRPC      `mapstructure:",squash"`
 		Database  `mapstructure:",squash"`
-		Aws       `mapstructure:",squash"`
-		Tracing   `mapstructure:",squash"`
 		Logger    `mapstructure:",squash"`
 		MapApiKey string `env:"MAP_API_KEY"`
 		Image     `mapstructure:",squash"`
@@ -60,18 +51,6 @@ type (
 		SetMaxOpenConns int    `env:"SETMAXOPENCONNS" env-default:"5"`
 		Debug           bool   `env:"DEBUG" env-default:"false"`
 	}
-	// AWS Config
-	Aws struct {
-		AwsAccessKeyId       string `env:"AWS_ACCESS_KEY_ID"`
-		AwsSecretAccessKey   string `env:"AWS_SECRET_ACCESS_KEY"`
-		AwsDefaultRegion     string `env:"AWS_DEFAULT_REGION"`
-		AwsStorageBucketName string `env:"AWS_STOARGE_BUCKET_NAME"`
-		AwsS3BaseURL         string `env:"AWS_S3_BASE_URL"`
-		AwsCloudfrontURL     string `env:"AWS_CLOUDFRONT_URL"`
-	}
-	Tracing struct {
-		TracerProvider string `env:"TRACERPROVIDER"`
-	}
 
 	// Logger config
 	Logger struct {
@@ -91,21 +70,6 @@ type (
 	}
 )
 
-// type Config struct {
-// 	HTTPAddress     string `mapstructure:"HTTP_ADDRESS"`
-// 	DBHost          string `mapstructure:"DBHOST"`
-// 	DbUser          string `mapstructure:"DBUSER"`
-// 	DbPass          string `mapstructure:"DBPASS"`
-// 	DbPort          string `mapstructure:"DBPORT"`
-// 	DbName          string `mapstructure:"DBNAME"`
-// 	DbSchema        string `mapstructure:"DBSCHEMA"`
-// 	TracerProvider  string `mapstructure:"TRACERPROVIDER"`
-// 	SetMaxOpenConns int    `mapstructure:"SETMAXOPENCONNS"`
-// 	Debug           bool   `mapstructure:"DEBUG"`
-// }
-
-// Read properties from config.env file
-// Command line enviroment variable will overwrite config.env properties
 func NewConfig(configFile string) *Config {
 	config := Config{}
 	godotenv.Load(configFile)
