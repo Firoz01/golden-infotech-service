@@ -21,7 +21,15 @@ To get started with the API, follow these steps:
 3. Set up your database connection details in the configuration file.
 4. Run the API using `go run main.go`.
 5. You can now send HTTP requests to the specified endpoints.
-```
 
+### Navigate 
+```
+golden-infotech-service>docs>docs.json
+```
+Import this JSON file on Postman software, You will see all api route with documentation and able to test the api end point
+
+
+
+Thanks
 
 
