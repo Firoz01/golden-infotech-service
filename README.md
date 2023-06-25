@@ -1,40 +1,26 @@
-# SETUP
-Copy `config.sample.env` to `config.env`. Change DBPASS field.
+### Golden InfoTech Service
 
-# RUN
-`go run .`
+## GoLang RESTful API for Book Management
 
-# Build
-`go build .`
+#### This project is a simple RESTful API built using the Go programming language, specifically using the Echo framework for handling HTTP requests and the Bun ORM for database operations. The API allows users to perform CRUD (Create, Read, Update, Delete) operations on a resource called "books".
 
-# Docker Run
-`docker-compose up --build`
+### Endpoints 
 
+- **GET /books**: Retrieves a list of all books.
+- **GET /books/{id}**: Retrieves a specific book by its ID.
+- **POST /books**: Creates a new book.
+- **PUT /books/{id}**: Updates an existing book by its ID.
+- **DELETE /books/{id}**: Deletes a book by its ID.
 
-# Local setup and run with air
-```
-# binary will be $(go env GOPATH)/bin/air
-curl -sSfL https://raw.githubusercontent.com/cosmtrek/air/master/install.sh | sh -s -- -b $(go env GOPATH)/bin
+## Getting Started
 
-# or install it into ./bin/
-curl -sSfL https://raw.githubusercontent.com/cosmtrek/air/master/install.sh | sh -s
+To get started with the API, follow these steps:
 
-alias air='$(go env GOPATH)/bin/air'
-
-air -v
-
-air run .
-```
-
-
-# Copy Only Data Locally 
-```
-sudo psql -U postgres -d gmv_inventory_nightly -f gmv_inventory_service.sql -h localhost
-```
-
-# Copy Full Database Locally 
-```
-sudo psql -U postgres -d gmv_inventory_nightly -f gmv_inventory_service_full.sql -h localhost
+1. Clone the repository to your local machine.
+2. Install the necessary dependencies using `go get`.
+3. Set up your database connection details in the configuration file.
+4. Run the API using `go run main.go`.
+5. You can now send HTTP requests to the specified endpoints.
 ```
 
 
